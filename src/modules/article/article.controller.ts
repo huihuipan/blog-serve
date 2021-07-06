@@ -1,6 +1,15 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { 
+  Controller, 
+  Body, 
+  Query,
+  Get, 
+  Post,
+} from '@nestjs/common';
 import { ArticleService } from './article.service';
-import { Article } from './interface/article.interace';
+import { ArticleCreateDTO } from './dto/article-create.dto';
+import { ArticleEditDTO } from './dto/article-edit.dto';
+import { IdDTO } from './dto/id.dto';
+import { ListDTO } from './dto/list.dto';
 
 @Controller('article')
 export class ArticleController {
@@ -9,35 +18,37 @@ export class ArticleController {
   ) {}
 
   @Get('list')
-  getMore() {
-    return this.articleService.getMore()
+  getMore(
+    @Query() listDTO: ListDTO,
+  ) {
+    return this.articleService.getMore(listDTO)
   }
 
   @Get('info')
   getOne(
-    @Query() id:string
+    @Query() idDto: IdDTO
   ) {
-    return this.articleService.getOne({ id })
+    return this.articleService.getOne(idDto)
   }
 
   @Post('create')
   create(
-    @Body() article: Article
+    @Body() articleCreateDTO: ArticleCreateDTO
   ) {
-    return this.articleService.create(article)
+    return this.articleService.create(articleCreateDTO)
   }
 
   @Post('edit')
   update(
-    @Body() article: Article
+    @Body() articleEditDTO: ArticleEditDTO
   ) {
-    return this.articleService.update(article)
+    return this.articleService.update(articleEditDTO)
   }
 
-  @Post('remove')
+  @Post('delete')
   delete(
-    @Body() id: number
+    @Body() idDto: IdDTO,
   ) {
-    return this.articleService.delete({ id })
+    return this.articleService.delete(idDto)
   }
 }
