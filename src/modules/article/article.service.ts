@@ -6,7 +6,7 @@ import { ListDTO } from './dto/list.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Article } from './entity/article.entity';
-import { getPagination } from 'src/utils';
+import { getPagination } from 'src/utils/index.util';
 
 @Injectable()
 export class ArticleService {  
@@ -99,9 +99,13 @@ export class ArticleService {
   ) {
     const { id } = articleEditDTO
     let articleToUpdate = await this.articleRepository.findOne({ id })
-    articleToUpdate.title = articleEditDTO.title
-    articleToUpdate.description = articleEditDTO.description
-    articleToUpdate.content = articleEditDTO.content
+
+    for (let key in articleEditDTO) {
+      if (key !== 'id') {
+        articleToUpdate[key] = articleEditDTO[key]
+      }
+    }
+
     const result = await this.articleRepository.save(articleToUpdate)
 
     return {
