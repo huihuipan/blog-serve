@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { ArticleInfoItem } from "./article-base.response";
+import { ArticleInfoItem } from "./article-base.vo";
 
-export class ArticleInfoData {
+export class ArticleInfoVO {
   @ApiProperty({ type: ArticleInfoItem })
   info: ArticleInfoItem
 }
@@ -11,8 +11,8 @@ export class ArticleInfoResponse {
   code: number
 
   @ApiProperty({ description: '数据',
-    type: () => ArticleInfoData, example: ArticleInfoData, })
-  data: ArticleInfoData
+    type: () => ArticleInfoVO, example: ArticleInfoVO, })
+  data: ArticleInfoVO
 
   @ApiProperty({ description: '请求结果信息', example: '请求成功' })
   message: string

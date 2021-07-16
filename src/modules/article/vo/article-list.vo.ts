@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { ArticleListItem } from "./article-base.response";
+import { ArticleListItem } from "./article-base.vo";
 
 class Pagination {
   @ApiProperty({ description: '第几页', example: 1 })
@@ -15,7 +15,7 @@ class Pagination {
   total: number
 }
 
-export class ArticleListData {
+export class ArticleListVO {
   @ApiProperty({ type: ArticleListItem, isArray: true })
   list: Array<ArticleListItem>
 
@@ -27,8 +27,8 @@ export class ArticleListResponse {
   @ApiProperty({ description: '状态码', example: 200, })
   code: number
 
-  @ApiProperty({ description: '数据', type: () => ArticleListData, example: ArticleListData, })
-  data: ArticleListData
+  @ApiProperty({ description: '数据', type: () => ArticleListVO, example: ArticleListVO, })
+  data: ArticleListVO
 
   @ApiProperty({ description: '请求结果信息', example: '请求成功' })
   message: string
