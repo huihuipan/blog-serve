@@ -1,12 +1,12 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { ArticleCreateDTO } from './dto/article-create.dto';
 import { ArticleEditDTO } from './dto/article-edit.dto';
-import { IdDTO } from './dto/id.dto';
-import { ListDTO } from './dto/list.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Article } from './entity/article.entity';
 import { getPagination } from 'src/utils/index.util';
+import { PageDTO } from 'src/common/dto/Page.dto';
+import { IdDTO } from 'src/common/dto/id.dto';
 
 @Injectable()
 export class ArticleService {  
@@ -15,15 +15,10 @@ export class ArticleService {
     private readonly articleRepository: Repository<Article>,
   ) {}
 
-  /**
-   * 
-   * @param listDTO 
-   * @returns 
-   */
   async getMore(
-    listDTO: ListDTO,
+    pageDTO: PageDTO,
   ) {
-		const { page = 1, pageSize = 10 } = listDTO
+		const { page = 1, pageSize = 10 } = pageDTO
     const getList = this.articleRepository
       .createQueryBuilder('article')
       .where({ isDelete: false })
@@ -47,13 +42,8 @@ export class ArticleService {
     }
   }
 
-  /**
-   * 
-   * @param idDto 
-   * @returns 
-   */
   async getOne(
-    idDto: IdDTO  
+    idDto: IdDTO
   ) {
     const { id } = idDto
 		const articleDetial = await this.articleRepository

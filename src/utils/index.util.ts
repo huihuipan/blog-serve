@@ -1,5 +1,5 @@
 /**
- * 
+ * 获取分页信息
  * @param total 
  * @param pageSize 
  * @param page 

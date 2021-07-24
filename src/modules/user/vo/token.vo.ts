@@ -1,7 +1,11 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { SuccessVO } from "src/common/dto/success.dto";
 
 export class TokenItem {
-  @ApiProperty({ description: 'token', example: 'sdfghjkldasascvbnm' }) 
+  /**
+   * token
+   * @example eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzIsIm5pY2tuYW1lIjoi5pav5o-Q6Iqs5aSn54uXIiwibW9iaWxlIjoiMTMwNDkxNTM0NjYiLCJpYXQiOjE2MjY5MjQ0MDIsImV4cCI6MTYyNzAxMDgwMn0.-BHoF_9ZVNjydtkv-GPOmisn7RzT73V7hiEXf1vX7E0
+   */
   token: string;
 }
 
@@ -10,14 +14,6 @@ export class TokenVO {
   info: TokenItem
 }
 
-export class TokenResponse {
-  @ApiProperty({ description: '状态码', example: 200, })
-  code: number
-
-  @ApiProperty({ description: '数据',
-    type: () => TokenVO, example: TokenVO, })
+export class TokenResponse extends SuccessVO{
   data: TokenVO
-
-  @ApiProperty({ description: '请求结果信息', example: '请求成功' })
-  message: string
 } 

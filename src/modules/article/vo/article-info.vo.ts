@@ -1,19 +1,23 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { ArticleInfoItem } from "./article-base.vo";
+import { ApiProperty, IntersectionType, OmitType } from "@nestjs/swagger";
+import { CommonDTO } from "src/common/dto/common.dto";
+import { SuccessVO } from "src/common/dto/success.dto";
+import { ArticleDTO } from "../dto/article.dto";
+
+export class ArticleInfoItem extends IntersectionType(
+  CommonDTO, 
+  OmitType(ArticleDTO, ['content'] as const)
+) {}
 
 export class ArticleInfoVO {
-  @ApiProperty({ type: ArticleInfoItem })
+  /**
+   * 详情信息
+   */
+  // @ApiProperty({ type: () => ArticleInfoItem, example: ArticleInfoItem })
   info: ArticleInfoItem
 }
 
-export class ArticleInfoResponse {
-  @ApiProperty({ description: '状态码', example: 200, })
-  code: number
-
-  @ApiProperty({ description: '数据',
-    type: () => ArticleInfoVO, example: ArticleInfoVO, })
-  data: ArticleInfoVO
-
-  @ApiProperty({ description: '请求结果信息', example: '请求成功' })
-  message: string
+export class ArticleInfoSuccessVO extends SuccessVO {
+  data: {
+    info: ArticleInfoItem
+  }
 } 

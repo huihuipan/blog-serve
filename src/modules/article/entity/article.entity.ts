@@ -1,35 +1,8 @@
-import { 
-  Entity, 
-  Column, 
-  PrimaryGeneratedColumn, 
-  UpdateDateColumn,
-  CreateDateColumn,
-  VersionColumn,
-} from 'typeorm';
+import { Common } from 'src/common/entity/common.entity';
+import { Entity, Column } from 'typeorm';
 
 @Entity()
-export class Article {
-    // 主键id
-    @PrimaryGeneratedColumn()
-    id: number;
-  
-    // 创建时间
-    @CreateDateColumn()
-    createTime: Date
-  
-    // 更新时间
-    @UpdateDateColumn()
-    updateTime: Date
-  
-    // 软删除
-    @Column({
-      default: false
-    })
-    isDelete: boolean
-  
-    // 更新次数
-    @VersionColumn()
-    version: number
+export class Article extends Common{
   
     // 文章标题
     @Column('text')
