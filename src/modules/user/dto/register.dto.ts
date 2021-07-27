@@ -5,7 +5,7 @@ import { regMobileCN } from "src/utils/regex.util";
 export class RegisterDTO {
   /**
    * 手机号，唯一
-   * @example: 13049153466
+   * @example 13088888888
    */
   @Matches(regMobileCN, { message: '请输入正确手机号' })
   @IsNotEmpty({ message: '请输入手机号' })
@@ -13,7 +13,7 @@ export class RegisterDTO {
 
   /**
    * 用户名
-   * @example: 斯提芬大狗
+   * @example 斯提芬大狗
    */
   @IsNotEmpty({ message: '请输入用户昵称' })
   @IsString({ message: '名字必须是 String 类型'})

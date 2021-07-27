@@ -4,12 +4,14 @@ import { AppService } from './app.service';
 import { ArticleModule } from './modules/article/article.module';
 import { UserModule } from './modules/user/user.module';
 import { typeOrmConfig } from './config/db/typeorm.config';
+import { TagModule } from './modules/tag/tag.module';
 @Module({
   imports: [
     // 使用 TypeORM 配置数据库
     typeOrmConfig,
     ArticleModule,
-    UserModule
+    UserModule,
+    TagModule
   ],
   controllers: [AppController],
   providers: [AppService],
