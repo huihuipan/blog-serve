@@ -19,14 +19,14 @@ export class ArticleController {
 
   @ApiOkResponse({ description: '文章列表', type: ArticleListSuccessVO })
   @Get('list')
-  async getMore(
+  async getMany(
     @Query() articleListDto: ArticleListDTO,
   ): Promise<ArticleListVO> {
     const { tagId } = articleListDto
     if (tagId) {
-      return await this.articleService.getMoreByTagId(articleListDto)
+      return await this.articleService.getManyByTagId(articleListDto)
     }
-    return await this.articleService.getMore(articleListDto)
+    return await this.articleService.getMany(articleListDto)
   }
 
   @ApiOkResponse({ description: '文章详情', type: ArticleInfoSuccessVO })

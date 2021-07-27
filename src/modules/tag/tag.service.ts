@@ -15,7 +15,7 @@ export class TagService {
     private readonly tagRepository: Repository<Tag>,
   ) {}
 
-  async getMore(): Promise<TagListVO> {
+  async getMany(): Promise<TagListVO> {
     const getList = this.tagRepository
       .createQueryBuilder('tag')
       .where({ isDelete: false })

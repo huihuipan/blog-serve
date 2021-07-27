@@ -16,7 +16,7 @@ export class ArticleService {
     private readonly articleRepository: Repository<Article>,
   ) {}
 
-  async getMore(
+  async getMany(
     pageDTO: PageDTO,
   ) {
 		const { page = 1, pageSize = 10 } = pageDTO
@@ -48,7 +48,7 @@ export class ArticleService {
     }
   }
 
-  async getMoreByTagId(
+  async getManyByTagId(
     articleListDto: ArticleListDTO
   ) {
 		const { page = 1, pageSize = 10, tagId } = articleListDto
