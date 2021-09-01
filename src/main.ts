@@ -4,30 +4,39 @@ import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { TransformInterceptor } from './interceptor/transform.interceptor';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { uploadStaticSrc } from './config/upload/upload.config';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import envConfig from './config'
+
+const { SERVICE_CONFIG, SWAGGER_CONFIG } = envConfig()
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
+  // 使用验证管道
   app.useGlobalPipes(new ValidationPipe())
+  // 使用拦截器
   app.useGlobalInterceptors(new TransformInterceptor())
+  // 使用异常过滤器
   app.useGlobalFilters(new HttpExceptionFilter())
 
+  // 静态文件路径
   app.useStaticAssets(join(__dirname, '..', 'upload'), {
-    prefix: uploadStaticSrc,
+    prefix: SERVICE_CONFIG.uploadStaticSrc,
   });
 
-  const options = new DocumentBuilder()
-    .setTitle('blog-serve')
-    .setDescription('接口文档')
-    .setVersion('1.0')
-    .addBearerAuth()
-    .build();
-  const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('swagger-doc', app, document);
+  if (SWAGGER_CONFIG.enableSwagger) {
+    // Swagger 文档
+    const options = new DocumentBuilder()
+      .setTitle('blog-serve')
+      .setDescription('接口文档')
+      .setVersion('1.0')
+      .addBearerAuth()
+      .build();
+    const document = SwaggerModule.createDocument(app, options);
+    SwaggerModule.setup('swagger-doc', app, document);
+  }
 
-  await app.listen(3000);
+  await app.listen(SERVICE_CONFIG.port);
 }
 bootstrap();

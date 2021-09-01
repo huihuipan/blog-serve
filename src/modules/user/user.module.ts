@@ -5,15 +5,15 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
-import { jwtConstants } from 'src/config/jwt/jwt.config';
+import { ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([User]),
-    JwtModule.register({
-      secret: jwtConstants.secret,
-      signOptions: { expiresIn: '24h' }, // token 过期时效
-    }),
+    JwtModule.registerAsync({
+      inject: [ConfigService],  // 注入 ConfigService
+      useFactory: (configService: ConfigService) => configService.get('JWT_CONFIG'), // 获取配置信息
+    })
   ],
   controllers: [UserController],
   providers: [UserService, JwtStrategy]
