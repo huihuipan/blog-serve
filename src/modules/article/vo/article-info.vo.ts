@@ -1,4 +1,4 @@
-import { ApiProperty, IntersectionType, OmitType } from "@nestjs/swagger";
+import { IntersectionType, OmitType } from "@nestjs/swagger";
 import { CommonDTO } from "src/common/dto/common.dto";
 import { SuccessVO } from "src/common/dto/success.dto";
 import { ArticleDTO } from "../dto/article.dto";

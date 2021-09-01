@@ -15,10 +15,16 @@ export class User extends Common{
   mobile: string;
 
   // 加密后的密码
-  @Column('text', { select: false })
+  @Column({ 
+    type: 'text',
+    select: false,
+  })
   password: string;
 
   // 加密盐
-  @Column('text', { select: false })
+  @Column({
+    type: 'text',
+    select: false,
+  })
   salt: string;
 }

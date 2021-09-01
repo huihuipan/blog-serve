@@ -21,9 +21,9 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter())
 
   // 静态文件路径
-  app.useStaticAssets(join(__dirname, '..', 'upload'), {
-    prefix: SERVICE_CONFIG.uploadStaticSrc,
-  });
+  app.useStaticAssets(join(__dirname, '..', SERVICE_CONFIG.uploadStaticSrc), {
+    prefix: `/${SERVICE_CONFIG.uploadStaticSrc}`
+  })
 
   if (SWAGGER_CONFIG.enableSwagger) {
     // Swagger 文档

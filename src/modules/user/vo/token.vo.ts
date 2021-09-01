@@ -1,4 +1,3 @@
-import { ApiProperty } from "@nestjs/swagger";
 import { SuccessVO } from "src/common/dto/success.dto";
 
 export class TokenItem {
@@ -10,10 +9,11 @@ export class TokenItem {
 }
 
 export class TokenVO {
-  @ApiProperty({ type: TokenItem })
   info: TokenItem
 }
 
-export class TokenResponse extends SuccessVO{
-  data: TokenVO
+export class TokenSuccessVO extends SuccessVO{
+  data: {
+    info: TokenItem
+  }
 } 

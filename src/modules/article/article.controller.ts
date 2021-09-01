@@ -6,7 +6,6 @@ import { ApiTags, ApiOkResponse, ApiBearerAuth, ApiCreatedResponse } from '@nest
 import { ArticleInfoVO, ArticleInfoSuccessVO } from './vo/article-info.vo';
 import { ArticleListSuccessVO, ArticleListVO } from './vo/article-list.vo';
 import { AuthGuard } from '@nestjs/passport';
-import { PageDTO } from 'src/common/dto/page.dto';
 import { IdDTO } from 'src/common/dto/id.dto';
 import { ArticleListDTO } from './dto/article-list.dto';
 

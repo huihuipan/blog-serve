@@ -70,8 +70,6 @@ export class UserService {
       .addSelect('user.password')
       .where('user.mobile = :mobile', { mobile })
       .getOne()
-    
-    console.log({ user })
 
     if (!user) {
       throw new NotFoundException('用户不存在')
@@ -99,7 +97,7 @@ export class UserService {
 
   async login(
     loginDTO: LoginDTO
-  ): Promise<any>{
+  ): Promise<TokenVO>{
     const user = await this.checkLoginForm(loginDTO)
     const token = await this.certificate(user)
     return {
@@ -107,7 +105,6 @@ export class UserService {
         token
       }
     }
-
   }
 
 

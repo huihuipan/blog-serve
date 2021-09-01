@@ -78,9 +78,10 @@ export class PictureService {
     const arr = file.originalname.split('.')
     const fileType = arr[arr.length - 1]
     const fileName = currentSign + '.' + fileType
-    fs.writeFileSync(`./upload/${fileName}`, buffer)
+    
+    fs.writeFileSync(`${this.configService.get('SERVICE_CONFIG').uploadStaticSrc}/${fileName}`, buffer)
 
-    const src = this.configService.get('SERVICE_CONFIG').uploadStaticSrc + fileName
+    const src = `${this.configService.get('SERVICE_CONFIG').uploadStaticSrc}/${fileName}`
 
     this.create({ src, sign: currentSign })
 

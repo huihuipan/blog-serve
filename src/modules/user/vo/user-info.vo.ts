@@ -1,4 +1,3 @@
-import { ApiProperty } from "@nestjs/swagger";
 import { SuccessVO } from "src/common/dto/success.dto";
 
 export class UserInfoItem {

@@ -4,7 +4,7 @@ export default {
     // 端口
     port: 3000,
     // 静态文件路径 localhost:3000/static/upload/xxx.jpg
-    uploadStaticSrc: '/static/upload/'
+    uploadStaticSrc: 'upload',
   },
 
   // swagger 配置

@@ -1,3 +1,7 @@
+/**
+ * crypto 常用封装方法
+ */
+
 import * as crypto from 'crypto';
 
 // 随机盐
@@ -21,6 +25,7 @@ export function encryptPassword(password: string, salt: string): string {
   );
 }
 
+// 计算 流 MD5
 export function encryptFileMD5(buffer: Buffer) {
 
   const md5 = crypto.createHash('md5');

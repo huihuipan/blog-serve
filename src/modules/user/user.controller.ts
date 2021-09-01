@@ -3,8 +3,9 @@ import { ApiBody, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { LoginDTO } from './dto/login.dto';
 import { RegisterDTO } from './dto/register.dto';
 import { UserService } from './user.service';
-import { TokenResponse } from './vo/token.vo';
+import { TokenSuccessVO, TokenVO } from './vo/token.vo';
 import { UserInfoSuccessVO } from './vo/user-info.vo';
+
 @ApiTags('用户模块')
 @Controller('user')
 export class UserController {
@@ -20,11 +21,11 @@ export class UserController {
     return this.userService.register(registerDTO)
   }
 
-  @ApiOkResponse({ description: '登陆', type: TokenResponse })
+  @ApiOkResponse({ description: '登陆', type: TokenSuccessVO })
   @Post('login')
   async login(
     @Body() loginDTO: LoginDTO
-  ): Promise<UserInfoSuccessVO> {
+  ): Promise<TokenVO> {
     return this.userService.login(loginDTO)
   }
 }
