@@ -9,7 +9,7 @@
     "prebuild": "rimraf dist",
     "build___init": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
+    "start___init": "nest start",
     "start:dev___init": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod___init": "node dist/main",
@@ -19,13 +19,13 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-
-
-    "start:dev": "NODE_ENV=development nest start --watch ",
-    "start:prod": "NODE_ENV=production nest start --watch ",
-    "build": "nest build",
-    "serve:dev": "NODE_ENV=development nest start",
-    "serve:prod": "NODE_ENV=production nest start"
+    "dev:dev": "NODE_ENV=development nest start --debug --watch",
+    "dev": "npm run dev:dev",
+    "dev:prod": "NODE_ENV=production nest start --debug --watch",
+    "build:dev": "nest build --webpack",
+    "build:prod": "nest build --webpack",
+    "build": "npm run build:prod",
+    "start": "nest start"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.6",
@@ -34,7 +34,6 @@
     "@nestjs/jwt": "^8.0.0",
     "@nestjs/passport": "^8.0.1",
     "@nestjs/platform-express": "^8.0.6",
-    "@nestjs/swagger": "^5.0.9",
     "@nestjs/typeorm": "^8.0.2",
     "@types/crypto-js": "^4.0.2",
     "class-transformer": "^0.4.0",
@@ -47,7 +46,6 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.3.0",
-    "swagger-ui-express": "^4.1.6",
     "typeorm": "^0.2.34"
   },
   "devDependencies": {

@@ -5,7 +5,6 @@ export class PaginationDTO {
 
   /**
    * 第几页
-   * @example 1
    */
   @IsOptional()
   @Matches(regPositiveOrEmpty, { message: 'page 不可小于 0' })
@@ -13,7 +12,6 @@ export class PaginationDTO {
 
   /**
    * 每页数据条数
-   * @example 10
    */
   @IsOptional()
   @Matches(regPositiveOrEmpty, { message: 'pageSize 不可小于 0' })
@@ -21,13 +19,11 @@ export class PaginationDTO {
 
   /**
    * 总页数
-   * @example 10
    */
   pages: number
 
   /**
    * 总条数
-   * @example 100
    */
   total: number
 }

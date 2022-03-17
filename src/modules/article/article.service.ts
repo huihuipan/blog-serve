@@ -5,7 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Article } from './entity/article.entity';
 import { getPagination } from 'src/utils/index.util';
-import { PageDTO } from 'src/common/dto/Page.dto';
+import { PageDTO } from 'src/common/dto/page.dto';
 import { IdDTO } from 'src/common/dto/id.dto';
 import { ArticleListDTO } from './dto/article-list.dto';
 

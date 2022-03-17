@@ -1,4 +1,3 @@
-import { OmitType } from "@nestjs/swagger";
 import { PaginationDTO } from "./pagination.dto";
 
-export class PageDTO extends OmitType(PaginationDTO, ['pages', 'total'] as const) {}
+export class PageDTO extends PaginationDTO {}

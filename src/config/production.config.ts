@@ -9,11 +9,6 @@ export default {
     uploadStaticSrc: 'upload',
   },
 
-  // swagger 配置
-  SWAGGER_CONFIG: {
-    enableSwagger: false,
-  },
-
   // 数据库配置
   DATABASE_CONFIG: {
     type: 'mysql',

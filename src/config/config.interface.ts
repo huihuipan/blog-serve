@@ -7,11 +7,6 @@ interface Config {
     uploadStaticSrc: string,
   },
 
-  // swagger 配置
-  SWAGGER_CONFIG: {
-    enableSwagger: boolean,
-  },
-
   // 数据库配置
   DATABASE_CONFIG: {
     type: string,

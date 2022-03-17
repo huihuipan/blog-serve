@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { PageDTO } from 'src/common/dto/Page.dto';
+import { PageDTO } from 'src/common/dto/page.dto';
 import { getPagination } from 'src/utils/index.util';
 import { Repository } from 'typeorm';
 import { PictureCreateDto } from './dto/picture-create';
