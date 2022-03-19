@@ -8,15 +8,12 @@ import { Picture } from './entity/picture.entity';
 import { PictureInfoVO } from './vo/picture-info.vo';
 import * as fs from 'fs';
 import { encryptFileMD5 } from 'src/utils/cryptogram.util';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class PictureService {
   constructor(
     @InjectRepository(Picture)
     private readonly pictureRepository: Repository<Picture>,
-
-    private readonly configService: ConfigService,
   ) {}
 
   async getMany(
@@ -79,9 +76,9 @@ export class PictureService {
     const fileType = arr[arr.length - 1]
     const fileName = currentSign + '.' + fileType
     
-    fs.writeFileSync(`${this.configService.get('SERVICE_CONFIG').uploadStaticSrc}/${fileName}`, buffer)
+    fs.writeFileSync(`${process.env.SERVE_UPLOAD_FOLDER}/${fileName}`, buffer)
 
-    const src = `${this.configService.get('SERVICE_CONFIG').uploadStaticSrc}/${fileName}`
+    const src = `${process.env.SERVE_UPLOAD_FOLDER}/${fileName}`
 
     this.create({ src, sign: currentSign })
 

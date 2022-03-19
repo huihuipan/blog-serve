@@ -12,8 +12,13 @@ import { ConfigService } from '@nestjs/config';
     TypeOrmModule.forFeature([User]),
     JwtModule.registerAsync({
       inject: [ConfigService],  // 注入 ConfigService
-      useFactory: (configService: ConfigService) => configService.get('JWT_CONFIG'), // 获取配置信息
-    })
+      useFactory: () => ({
+        secret: process.env.JWT_SECRET, // 密钥
+        signOptions: { 
+          expiresIn: process.env.JWT_EXPIRES_IN, // token 过期时效
+        },
+      }), // 获取配置信息
+    }),
   ],
   controllers: [UserController],
   providers: [UserService, JwtStrategy]

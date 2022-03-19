@@ -5,9 +5,6 @@ import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { TransformInterceptor } from './interceptor/transform.interceptor';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import envConfig from './config'
-
-const { SERVICE_CONFIG } = envConfig()
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -20,10 +17,11 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter())
 
   // 静态文件路径
-  app.useStaticAssets(join(__dirname, '..', SERVICE_CONFIG.uploadStaticSrc), {
-    prefix: `/${SERVICE_CONFIG.uploadStaticSrc}`
+  app.useStaticAssets(join(__dirname, '..', process.env.SERVE_UPLOAD_FOLDER), {
+    prefix: `/${process.env.SERVE_UPLOAD_FOLDER}`
   })
 
-  await app.listen(SERVICE_CONFIG.port);
+  // 监听端口
+  await app.listen(process.env.SERVE_PORT);
 }
 bootstrap();

@@ -34,3 +34,7 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 upload/*
+
+# 环境变量
+.env.*
+!.env.local

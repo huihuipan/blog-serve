@@ -3,23 +3,29 @@ import { ArticleModule } from './modules/article/article.module';
 import { UserModule } from './modules/user/user.module';
 import { TagModule } from './modules/tag/tag.module';
 import { PictureModule } from './modules/picture/picture.module';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import envConfig from './config'
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 @Module({
   imports: [
-    // 配置
+    // 环境变量配置
     ConfigModule.forRoot({
       isGlobal: true,     // 全局模块
-      load: [envConfig],  // 加载配置
-      ignoreEnvFile: true, // 禁止加载 .env 文件
+      envFilePath: `.env.${process.env.NODE_ENV}`, // .env 文件路径
     }),
 
     // 使用 TypeORM 配置数据库
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],  // 引入 ConfigModule
-      inject: [ConfigService],  // 注入 ConfigService
-      useFactory: (configService: ConfigService) => configService.get('DATABASE_CONFIG'), // 获取配置信息
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: process.env.MYSQL_HOST,
+      port: Number(process.env.MYSQL_PORT),
+      username: process.env.MYSQL_USERNAME,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
+      entities: ["dist/modules/**/*.entity{.ts,.js}"],
+      synchronize: true,
+      charset: 'utf8mb4',
+      logging: false,
     }),
 
     ArticleModule,
