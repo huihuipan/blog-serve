@@ -30,3 +30,6 @@ npm run start
 ```
 nest update --force
 ```
+
+## 环境变量
+环境变量在存储在 .env 文件中，需要 package.json 文件的启动命令 的 NODE_ENV 和 env 文件后缀一样，如 NODE_ENV=dev，那么对应的 env 文件就是 .env.dev，env 文件包含大量隐私信息，请妥善保管，不要存放在 git 仓库，具体配置参考 .env.local 文件
