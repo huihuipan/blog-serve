@@ -1,4 +1,4 @@
-import { PageDTO } from "src/common/dto/page.dto";
+import { PageDTO } from "@/common/dto/page.dto";
 
 export class ArticleListDTO extends PageDTO {
   /**

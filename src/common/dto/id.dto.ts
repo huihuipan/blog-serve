@@ -1,5 +1,5 @@
 import { IsNotEmpty, Matches } from "class-validator";
-import { regPositive } from "src/utils/regex.util";
+import { regPositive } from "@/utils/regex.util";
 
 export class IdDTO {
 

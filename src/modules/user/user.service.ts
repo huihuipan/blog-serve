@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { encryptPassword, makeSalt } from 'src/utils/cryptogram.util';
+import { encryptPassword, makeSalt } from '@/utils/cryptogram.util';
 import { Repository } from 'typeorm';
 import { LoginDTO } from './dto/login.dto';
 import { RegisterDTO } from './dto/register.dto';

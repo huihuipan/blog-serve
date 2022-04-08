@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { IdDTO } from 'src/common/dto/id.dto';
+import { IdDTO } from '@/common/dto/id.dto';
 import { Repository } from 'typeorm';
 import { TagCreateDTO } from './dto/tag-create.dto';
 import { TagUpdateDTO } from './dto/tag-update.dto';

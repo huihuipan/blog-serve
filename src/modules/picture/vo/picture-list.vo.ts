@@ -1,5 +1,5 @@
-import { PaginationDTO } from "src/common/dto/pagination.dto";
-import { SuccessVO } from "src/common/dto/success.dto";
+import { PaginationDTO } from "@/common/dto/pagination.dto";
+import { SuccessVO } from "@/common/dto/success.dto";
 import { PictureDTO } from "../dto/picture.dto";
 
 export class PictureListItem extends PictureDTO {}

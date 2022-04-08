@@ -1,5 +1,5 @@
-import { Common } from "src/common/entity/common.entity";
-import { Article } from "src/modules/article/entity/article.entity";
+import { Common } from "@/common/entity/common.entity";
+import { Article } from "@/modules/article/entity/article.entity";
 import { Column, Entity, JoinTable, ManyToMany } from "typeorm";
 
 @Entity()

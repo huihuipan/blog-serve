@@ -6,6 +6,11 @@ import { TransformInterceptor } from './interceptor/transform.interceptor';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 
+console.log('>>>>>>>')
+console.log(process.env.SERVE_PORT)
+console.log('<<<<<<<')
+
+
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 

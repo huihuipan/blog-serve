@@ -1,5 +1,5 @@
 import { IsNotEmpty, Matches } from "class-validator"
-import { regMobileCN } from "src/utils/regex.util";
+import { regMobileCN } from "@/utils/regex.util";
 
 export class LoginDTO {
 

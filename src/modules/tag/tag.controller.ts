@@ -4,7 +4,7 @@
 
 import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { IdDTO } from 'src/common/dto/id.dto';
+import { IdDTO } from '@/common/dto/id.dto';
 import { TagCreateDTO } from './dto/tag-create.dto';
 import { TagUpdateDTO } from './dto/tag-update.dto';
 import { TagService } from './tag.service';

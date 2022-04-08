@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { PageDTO } from 'src/common/dto/page.dto';
-import { getPagination } from 'src/utils/index.util';
+import { PageDTO } from '@/common/dto/page.dto';
+import { getPagination } from '@/utils/index.util';
 import { Repository } from 'typeorm';
 import { PictureCreateDto } from './dto/picture-create';
 import { Picture } from './entity/picture.entity';
 import { PictureInfoVO } from './vo/picture-info.vo';
 import * as fs from 'fs';
-import { encryptFileMD5 } from 'src/utils/cryptogram.util';
+import { encryptFileMD5 } from '@/utils/cryptogram.util';
 
 @Injectable()
 export class PictureService {

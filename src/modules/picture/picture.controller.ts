@@ -4,7 +4,7 @@
 
 import { Controller, Get, Post, Query, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { PageDTO } from 'src/common/dto/page.dto';
+import { PageDTO } from '@/common/dto/page.dto';
 import { PictureService } from './picture.service';
 import { PictureInfoSuccessVO, PictureInfoVO } from './vo/picture-info.vo';
 import { PictureListSuccessVO, PictureListVO } from './vo/picture-list.vo';

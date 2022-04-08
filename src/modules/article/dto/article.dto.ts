@@ -1,5 +1,5 @@
 import { IsNotEmpty } from "class-validator";
-import { TagUpdateDTO } from "src/modules/tag/dto/tag-update.dto";
+import { TagUpdateDTO } from "@/modules/tag/dto/tag-update.dto";
 export class ArticleDTO {
 
   /**

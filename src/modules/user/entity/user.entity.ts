@@ -1,4 +1,4 @@
-import { Common } from 'src/common/entity/common.entity';
+import { Common } from '@/common/entity/common.entity';
 import { 
   Entity, 
   Column,

@@ -1,7 +1,7 @@
-import { CommonDTO } from "src/common/dto/common.dto";
-import { PaginationDTO } from "src/common/dto/pagination.dto";
-import { SuccessVO } from "src/common/dto/success.dto";
-import { TagUpdateDTO } from "src/modules/tag/dto/tag-update.dto";
+import { CommonDTO } from "@/common/dto/common.dto";
+import { PaginationDTO } from "@/common/dto/pagination.dto";
+import { SuccessVO } from "@/common/dto/success.dto";
+import { TagUpdateDTO } from "@/modules/tag/dto/tag-update.dto";
 import { ArticleDTO } from "../dto/article.dto";
 export class ArticleListItem implements CommonDTO, ArticleDTO{
   createTime: Date;
